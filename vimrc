@@ -78,6 +78,7 @@ set t_Co=256
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'solarized256'
 set encoding=utf8
+set fileencodings=utf8,gb2312,gbk,gb18030
 
 " easymotion
 let g:EasyMotion_leader_key=';'
