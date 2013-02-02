@@ -1,37 +1,70 @@
-URxvt.preeditType:Root
+! $HOME/.Xdefaults
 
-!! im
-URxvt.inputMethod:ibus
+! Tango Color Theme
+! black
+*color0:  #2E3436
+*color8:  #555753
+! red
+*color1:  #a40000
+*color9:  #EF2929
+! green
+*color2:  #4E9A06
+*color10: #8AE234
+! yellow
+*color3:  #C4A000
+*color11: #FCE94F
+! blue
+*color4:  #3465A4
+*color12: #729FCF
+! purple
+*color5:  #75507B
+*color13: #AD7FA8
+! orange (replaces cyan)
+*color6:  #ce5c00
+*color14: #fcaf3e
+! white
+*color7:  #babdb9
+*color15: #EEEEEC
 
-!! color
+! Set as Login Shell
+URxvt*loginShell:true
+
+! Background
 URxvt.depth:32
-URxvt.background:[60]#000000
+URxvt.background:[95]#000000
 URxvt.foreground:#ffffff
 
-!! URL
-URxvt.urlLauncher:chromium
-URxvt.matcher.button:1
-URxvt.perl-ext-common:matcher
+! Font
+URxvt*font:xft:Bitstream Vera Sans Mono:size=9
 
-!! scrollbar
-URxvt.scrollBar:False
-!!URxvt.scrollBar_right:True
-!!URxvt.scrollBar_floating:False
-!!URxvt.scrollstyle:plain
+! xft settings
+Xft*dpi:96
+Xft*antialias:True
+Xft*hinting:Full
 
-!! scroll
+! Tabs
+!URxvt.perl-ext-common:default,tabbed
+!URxvt.tabbed.tabbar-fg:2
+!URxvt.tabbed.tabbar-bg:0
+!URxvt.tabbed.tab-fg:3
+!URxvt.tabbed.tab-bg:0
+
+! Scrollbar
+URxvt.scrollBar:false
+
+! Scrollpage
 URxvt.mouseWheelScrollPage:True
-URxvt.scrollTtyOutput:False
 URxvt.scrollWithBuffer:True
-URxvt.TtyKeypress:True
-
-!! cursor
-URxvt.cursorBlink:True
 URxvt.saveLines:3000
 
-!! border
-URxvt.borderLess:False
+! Copy/Paste & URL handling
+URxvt.perl-ext-sommon:default,clipboard,matcher,keyboard-select
+URxvt.keysym.M-u:perl:url-select:select_next
+URxvt.urlLancher:/usr/bin/google-chrome
+URxvt.underlineURLs:True
+URxvt.matcher.button:1
+URxvt.keysym.M-Escape:perl:keyboard-selsect:activate
+URxvt.keysym.M-c:perl:clipboard:copy
+URxvt.keysym.M-v:perl:clipboard:paste
+URxvt.keysym.M-C-v:perl:clipboard:paste_escaped
 
-!! font
-Xft.dpi:96
-URxvt.font:xft:Bitstream Vera Sans Mono:size=10:style=Regular:antialias=true,xft:文泉驿等宽正黑:size=10:style=Regular:antialias=true

@@ -57,7 +57,7 @@ endif
 set fileformats=unix,dos,mac
 syntax enable
 set background=dark
-colorscheme peaksea 
+"colorscheme peaksea 
 set guifont=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline\ 10
 "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
 set nobackup
