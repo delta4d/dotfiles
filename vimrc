@@ -18,6 +18,7 @@ Bundle 'snipMate'
 Bundle 'matchit.zip'
 Bundle 'vim-coffee-script'
 Bundle 'surround.vim'
+Bundle 'peaksea'
 
 " original repos on github
 Bundle 'Lokaltog/vim-powerline'
@@ -49,15 +50,17 @@ nmap <leader>w :w!<cr>
 if has("gui_running")
 	set guioptions-=T
 	set guioptions-=m
+	set guioptions-=r
 	set guioptions+=e
 	set lines=40 columns=80
 	set guitablabel=%M\ %t
+	set t_Co=256
+	set background=dark
+	colorscheme peaksea
 endif
 
 set fileformats=unix,dos,mac
 syntax enable
-set background=dark
-"colorscheme peaksea 
 set guifont=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline\ 10
 "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 10
 set nobackup
@@ -74,7 +77,7 @@ set cindent
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " power-line
 set laststatus=2
-set t_Co=256
+"set t_Co=256
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'solarized256'
 set encoding=utf8
