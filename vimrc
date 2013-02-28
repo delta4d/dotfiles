@@ -19,6 +19,8 @@ Bundle 'matchit.zip'
 Bundle 'vim-coffee-script'
 Bundle 'surround.vim'
 Bundle 'peaksea'
+Bundle 'L9'
+Bundle 'FuzzyFinder'
 
 " original repos on github
 Bundle 'Lokaltog/vim-powerline'
@@ -26,6 +28,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
+"Bundle 'tpope/vim-markdown'
 
 filetype plugin indent on		" required!
 
@@ -42,8 +45,6 @@ set autoread
 let mapleader = ","
 let g:mapleader = ","
 
-" Fast saving
-nmap <leader>w :w!<cr>
 
 " }}}
 
@@ -52,13 +53,15 @@ if has("gui_running")
 	set guioptions-=m
 	set guioptions-=r
 	set guioptions+=e
-	set lines=40 columns=80
 	set guitablabel=%M\ %t
 	set t_Co=256
 	set background=dark
 	colorscheme peaksea
 endif
 
+set encoding=utf8
+set fileencodings=utf8,gb2312,gbk,gb18030
+set fileencoding=utf8
 set fileformats=unix,dos,mac
 syntax enable
 set guifont=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline\ 10
@@ -80,8 +83,7 @@ set laststatus=2
 "set t_Co=256
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_colorscheme = 'solarized256'
-set encoding=utf8
-set fileencodings=utf8,gb2312,gbk,gb18030
+
 
 " easymotion
 let g:EasyMotion_leader_key=';'
@@ -92,26 +94,27 @@ let g:EasyMotion_leader_key=';'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CompileAndRun()
-	exec "w"
-	if &filetype=="cpp"
-		let compile_options="g++ -Wall -O2 %"
-		let run_options="./a.out"
-	elseif &filetype=="java"
-		let compile_options="javac %"
-		let run_options="java Main"
-	elseif &filetype=="ruby"
-		let compile_options="true"
-		let run_options="ruby %"
-	elseif &filetype=="python"
-		let compile_options="true"
-		let run_options="python %"
-	endif
-	exec "!xterm -geometry 80x32 -e \"". compile_options . " && " . "echo \"__COMPILED__\"" . " && " . run_options . "; read -n 1\""
+
+function! Run()
+	let compile_options = {
+		\'c': 'gcc -O2 -Wall %',
+		\'cpp': 'g++ -O2 -Wall %',
+		\'java': 'javac %'
+	\}
+	let run_options = {
+		\'c': './a.out',
+		\'cpp': './a.out',
+		\'java': 'java %'
+	\}
+	let compile_run = compile_options[&filetype] . ' && echo __COMPILED__  && ' . run_options[&filetype]
+	exec '!xterm -geometry 80x32 -e ' . "\"" . compile_run . ' && read -n 1' . "\""
 endfunction
 
-imap <F5> <ESC>:call CompileAndRun()<CR>
-nmap <F5> <ESC>:call CompileAndRun()<CR>
+imap <F5> <ESC>:call Run()<CR>
+nmap <F5> <ESC>:call Run()<CR>
+
+" Fast saving
+nmap <leader>w :w!<cr>
 
 " autoreload vimrc
 autocmd! bufwritepost .vimrc source .vimrc
@@ -120,7 +123,7 @@ autocmd! bufwritepost .vimrc source .vimrc
 nmap <leader>a gg"+yG
 
 " fast edit home vimrc
-map <silent> <leader>e :e ~/.vimrc<cr>
+map <silent> <leader>e :split<ESC>:e ~/.vimrc<cr>
 
 " move between windows
 map <C-j> <C-W>j
