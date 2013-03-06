@@ -19,6 +19,7 @@ Bundle 'matchit.zip'
 Bundle 'vim-coffee-script'
 Bundle 'surround.vim'
 Bundle 'peaksea'
+Bundle 'molokai'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 
@@ -29,6 +30,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 "Bundle 'tpope/vim-markdown'
+"Bundle 'chriskempson/tomorrow-theme'
 
 filetype plugin indent on		" required!
 
@@ -49,14 +51,17 @@ let g:mapleader = ","
 " }}}
 
 if has("gui_running")
+	set lines=40
+	set columns=80
 	set guioptions-=T
 	set guioptions-=m
 	set guioptions-=r
+	set guioptions-=L
 	set guioptions+=e
 	set guitablabel=%M\ %t
 	set t_Co=256
 	set background=dark
-	colorscheme peaksea
+	colorscheme molokai
 endif
 
 set encoding=utf8
@@ -82,7 +87,7 @@ set cindent
 set laststatus=2
 "set t_Co=256
 let g:Powerline_symbols = 'fancy'
-let g:Powerline_colorscheme = 'solarized256'
+"let g:Powerline_colorscheme = 'solarized256'
 
 
 " easymotion
@@ -97,17 +102,21 @@ let g:EasyMotion_leader_key=';'
 
 function! Run()
 	let compile_options = {
-		\'c': 'gcc -O2 -Wall %',
-		\'cpp': 'g++ -O2 -Wall %',
-		\'java': 'javac %'
-	\}
+			\'c'       : 'gcc -O2 -Wall %',
+			\'cpp'     : 'g++ -O2 -Wall %',
+			\'java'    : 'javac %'
+		\}
 	let run_options = {
-		\'c': './a.out',
-		\'cpp': './a.out',
-		\'java': 'java %'
-	\}
+			\'c'       : './a.out',
+			\'cpp'     : './a.out',
+			\'java'    : 'java %',
+			\'ruby'    : 'ruby %',
+			\'python'  : 'python %',
+			\'sh'      : 'sh %'
+		\}
 	let compile_run = compile_options[&filetype] . ' && echo __COMPILED__  && ' . run_options[&filetype]
-	exec '!xterm -geometry 80x32 -e ' . "\"" . compile_run . ' && read -n 1' . "\""
+	exec 'w'
+	exec '!xterm -geometry 80x32 -e ' . '"' . compile_run . ' ; read -n 1' . '"'
 endfunction
 
 imap <F5> <ESC>:call Run()<CR>
@@ -117,10 +126,13 @@ nmap <F5> <ESC>:call Run()<CR>
 nmap <leader>w :w!<cr>
 
 " autoreload vimrc
-autocmd! bufwritepost .vimrc source .vimrc
+" autocmd! bufwritepost .vimrc source .vimrc
 
 " fast copy the whole file to system clip
 nmap <leader>a gg"+yG
+
+" source .vimrc
+nmap <leader><leader> :source ~/.vimrc<cr>
 
 " fast edit home vimrc
 map <silent> <leader>e :split<ESC>:e ~/.vimrc<cr>
