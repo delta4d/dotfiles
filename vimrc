@@ -49,9 +49,7 @@ set autoread
 let mapleader = ","
 let g:mapleader = ","
 
-
-" }}}
-
+" If using gvim
 if has("gui_running")
 	set lines=40
 	set columns=80
@@ -92,12 +90,8 @@ set laststatus=2
 let g:Powerline_symbols = 'fancy'
 "let g:Powerline_colorscheme = 'solarized256'
 
-
 " easymotion
 let g:EasyMotion_leader_key=';'
-
-" }}}
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " User Defined Functions
