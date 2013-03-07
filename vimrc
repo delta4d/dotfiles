@@ -100,6 +100,14 @@ let g:EasyMotion_leader_key=';'
 " Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+function! Getv(dict, key)
+	if has_key(a:dict, a:key)
+		return a:dict[a:key]
+	else
+		return "true"
+	endif
+endfunction
+
 function! Run()
 	let compile_options = {
 			\'c'       : 'gcc -O2 -Wall %',
@@ -114,7 +122,9 @@ function! Run()
 			\'python'  : 'python %',
 			\'sh'      : 'sh %'
 		\}
-	let compile_run = compile_options[&filetype] . ' && echo __COMPILED__  && ' . run_options[&filetype]
+	let compile_cmd = Getv(compile_options, &filetype)
+	let run_cmd = Getv(run_options, &filetype)
+	let compile_run = compile_cmd . ' && echo __COMPILED__  && ' . run_cmd
 	exec 'w'
 	exec '!xterm -geometry 80x32 -e ' . '"' . compile_run . ' ; read -n 1' . '"'
 endfunction
