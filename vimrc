@@ -1,6 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set nocompatible		" be iMproved
 filetype off			" required!
 
@@ -37,6 +38,7 @@ filetype plugin indent on		" required!
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Sets how many lines of history VIM to remember
 set history=700
 
@@ -83,7 +85,8 @@ set cindent
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" power-line
+
+" vim power-line
 set laststatus=2
 "set t_Co=256
 let g:Powerline_symbols = 'fancy'
@@ -97,9 +100,10 @@ let g:EasyMotion_leader_key=';'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Shortcuts
+" User Defined Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" return dict[key]
 function! Getv(dict, key)
 	if has_key(a:dict, a:key)
 		return a:dict[a:key]
@@ -108,6 +112,7 @@ function! Getv(dict, key)
 	endif
 endfunction
 
+" define how to run a program
 function! Run()
 	let compile_options = {
 			\'c'       : 'gcc -O2 -Wall %',
@@ -129,6 +134,11 @@ function! Run()
 	exec '!xterm -geometry 80x32 -e ' . '"' . compile_run . ' ; read -n 1' . '"'
 endfunction
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Shortcuts
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" run run run
 imap <F5> <ESC>:call Run()<CR>
 nmap <F5> <ESC>:call Run()<CR>
 
