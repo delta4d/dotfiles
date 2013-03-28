@@ -31,4 +31,6 @@ alias bye='exit'
 alias ..="source $HOME/bin/handy/up"
 
 export PATH
-export EDITOR=VIM
+export EDITOR=vim
+
+unset RUBYOPT
