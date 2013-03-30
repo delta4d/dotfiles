@@ -23,6 +23,7 @@ Bundle 'peaksea'
 Bundle 'molokai'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
+Bundle 'vimwiki'
 
 " original repos on github
 Bundle 'Lokaltog/vim-powerline'
@@ -59,7 +60,7 @@ if has("gui_running")
 	set guioptions-=L
 	set guioptions+=e
 	set guitablabel=%M\ %t
-	set t_Co=256
+"	set t_Co=256
 	set background=dark
 	colorscheme molokai
 endif
@@ -78,7 +79,6 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set cindent
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Settings
@@ -109,8 +109,8 @@ endfunction
 " define how to run a program
 function! Run()
 	let compile_options = {
-			\'c'       : 'gcc -O2 -Wall %',
-			\'cpp'     : 'g++ -O2 -Wall %',
+			\'c'       : 'gcc -O2 -Wall -D__DELTA__ %',
+			\'cpp'     : 'g++ -O2 -Wall -D__DELTA__ %',
 			\'java'    : 'javac %'
 		\}
 	let run_options = {
@@ -125,7 +125,7 @@ function! Run()
 	let run_cmd = Getv(run_options, &filetype)
 	let compile_run = compile_cmd . ' && echo __COMPILED__  && ' . run_cmd
 	exec 'w'
-	exec '!xterm -geometry 80x32 -e ' . '"' . compile_run . ' ; read -n 1' . '"'
+	exec '!clear && xterm -geometry 80x32 -e ' . '"' . compile_run . ' ; read -n 1' . '"'
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
