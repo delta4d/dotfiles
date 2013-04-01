@@ -31,6 +31,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
+Bundle 'myusuf3/numbers.vim'
 "Bundle 'tpope/vim-markdown'
 "Bundle 'chriskempson/tomorrow-theme'
 
@@ -88,7 +89,7 @@ set cindent
 set laststatus=2
 "set t_Co=256
 let g:Powerline_symbols = 'fancy'
-"let g:Powerline_colorscheme = 'solarized256'
+let g:Powerline_colorscheme = 'solarized256'
 
 " easymotion
 let g:EasyMotion_leader_key=';'
@@ -163,3 +164,6 @@ map k gk
 
 " NERDTree
 map <F9> :NERDTree<CR>
+
+" numbers.vim
+map <F8> :NumbersToggle<CR>
