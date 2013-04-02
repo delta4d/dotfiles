@@ -28,7 +28,7 @@ alias lh='ls -lh'
 #alias ..='cd ..'
 alias path='echo -e ${PATH//:/\\n}'
 alias bye='exit'
-alias ..="source $HOME/bin/handy/up"
+alias ..="source $HOME/bin/up"
 
 export PATH
 export EDITOR=vim
