@@ -20,7 +20,7 @@ Bundle 'matchit.zip'
 Bundle 'vim-coffee-script'
 Bundle 'surround.vim'
 Bundle 'peaksea'
-Bundle 'molokai'
+"Bundle 'molokai'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'vimwiki'
@@ -32,6 +32,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'myusuf3/numbers.vim'
+Bundle 'chriskempson/vim-tomorrow-theme'
 "Bundle 'tpope/vim-markdown'
 "Bundle 'chriskempson/tomorrow-theme'
 
@@ -63,7 +64,7 @@ if has("gui_running")
 	set guitablabel=%M\ %t
 "	set t_Co=256
 	set background=dark
-	colorscheme molokai
+	colorscheme Tomorrow-Night
 endif
 
 set encoding=utf8
