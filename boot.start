@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+# start goagent
+nohup python2 /home/delta/opt/goagent/local/proxy.py > /dev/null &
