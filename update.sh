@@ -11,8 +11,8 @@ for file in ${FILES[@]}; do
 		[[ "$op" != "Y" ]] && echo "skip $file" && continue
 		cp $src $file
 		git add $file
-		read -p "give a short comment on $src" comment
-		git commit -m $comment
+		read -p "give a short comment on $src " comment
+		git commit -m \"$comment\"
 		NEEDS_UPDATE=1
 	fi
 done
