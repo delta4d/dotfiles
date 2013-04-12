@@ -20,6 +20,7 @@ Bundle 'matchit.zip'
 Bundle 'vim-coffee-script'
 Bundle 'surround.vim'
 Bundle 'peaksea'
+Bundle 'wombat256.vim'
 "Bundle 'molokai'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
@@ -168,3 +169,9 @@ map <F9> :NERDTree<CR>
 
 " numbers.vim
 map <F8> :NumbersToggle<CR>
+
+" set paste
+map <F2> :set paste<CR>
+
+" set nopaste
+map <F3> :set nopaste<CR>
