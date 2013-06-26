@@ -25,6 +25,7 @@ Bundle 'wombat256.vim'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'vimwiki'
+Bundle 'haskell.vim'
 
 " original repos on github
 Bundle 'Lokaltog/vim-powerline'
@@ -34,8 +35,11 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'scrooloose/nerdcommenter'
+"Bundle 'ervandew/supertab'
 "Bundle 'tpope/vim-markdown'
 "Bundle 'chriskempson/tomorrow-theme'
+"Bundle 'Valloric/YouCompleteMe'
 
 filetype plugin indent on		" required!
 
@@ -63,9 +67,10 @@ if has("gui_running")
 	set guioptions-=L
 	set guioptions+=e
 	set guitablabel=%M\ %t
-"	set t_Co=256
 	set background=dark
-	colorscheme Tomorrow-Night
+"	colorscheme Tomorrow-Night
+	set t_Co=256
+	colorscheme wombat256mod
 endif
 
 set encoding=utf8
@@ -82,6 +87,7 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set cindent
+set incsearch " match while typing
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Settings
