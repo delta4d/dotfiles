@@ -34,11 +34,11 @@ URxvt*loginShell:true
 
 ! Background
 URxvt.depth:32
-URxvt.background:[90]#000000
+URxvt.background:[95]#000000
 URxvt.foreground:#ffffff
 
 ! Font
-URxvt*font:xft:Bitstream Vera Sans Mono for Powerline:size=10,xft:文泉驿等宽微米黑:size=10
+URxvt*font:xft:Bitstream Vera Sans Mono for Powerline:antialias=True:pixelsize=12,xft:文泉驿等宽微米黑:size=10
 
 ! xft settings
 Xft*dpi:96
@@ -73,7 +73,11 @@ URxvt.keysym.M-C-v:perl:clipboard:paste_escaped
 
 !! xterm
 xterm*background: black
-xterm*foreground: green
+xterm*foreground: grey
 xterm*locale: true
 xterm*xftAntialias: true
-XTerm*faceName: Bitstream Vera Sans Mono:antialias=True:pixelsize=12
+XTerm*faceName: Bitstream Vera Sans Mono for Powerline:antialias=True:pixelsize=12
+
+! X Cursor Theme
+Xcursor.theme: Comix Cursor original Black Regular Slim
+!Xcursor.size: 16
