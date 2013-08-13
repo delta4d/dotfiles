@@ -1,14 +1,17 @@
-# wallpaper
-nitrogen --restore &
-
 # composite manager
 xcompmgr -c -t-5 -l-5 -r4.2 -o.55 &
 
-# ibus
-ibus-daemon -d -x &
-
-# volume manager
-volwheel &
+# wallpaper
+nitrogen --restore &
 
 # panel
 tint2 &
+
+# volume manager
+(sleep 1 && volumeicon) &
+
+# network manager applet
+(sleep 1 && /usr/bin/nm-applet --sm-disable) &
+
+# fcitx
+(sleep 1 && fcitx) &

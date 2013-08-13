@@ -1,4 +1,5 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+#/etc/local.d/boot.start
 
 # start goagent
 nohup python2 /home/delta/opt/goagent/local/proxy.py > /dev/null &
