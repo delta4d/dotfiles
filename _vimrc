@@ -32,6 +32,8 @@ endfunction
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+set rtp+=~/.vim
+
 " Sets how many lines of history VIM to remember
 set history=700
 
@@ -52,9 +54,10 @@ if has("gui_running")
 	set guioptions-=L
 	set guioptions+=e
 	set guitablabel=%M\ %t
-	set background=dark
 	set t_Co=256
-	colorscheme peaksea
+	set background=dark
+"	colorscheme peaksea
+	colorscheme molokai
 endif
 
 set encoding=utf8
@@ -84,6 +87,7 @@ let g:tex_flavor='latex'
 au BufRead,BufNewFile *.md set filetype=markdown
 au BufRead,BufNewFile *.cu set filetype=cpp
 au BufRead,BufNewFile *.hs set sw=4 ts=4 et
+au BufRead,BufNewFile *.rb set sw=2 ts=2 et
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " statusline settings
@@ -134,6 +138,10 @@ set iskeyword+=:
 " vimwiki
 let g:vimwiki_use_mouse = 1
 
+" c++11 syntax
+"let g:cpp_class_scope_highlight = 1
+"let g:cpp_experimental_template_highlight = 1
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " User Defined Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -162,8 +170,9 @@ function! Run()
 			\'ruby'    : 'ruby %',
 			\'python'  : 'python %',
 			\'sh'      : 'sh %',
-			\'haskell' : 'ghci -Wall %',
-			\'tex'     : 'SumatraPDF %'
+			\'haskell' : 'runghc %',
+			\'tex'     : 'SumatraPDF %',
+			\'go'	   : 'go run %'
 		\}
 	let compile_cmd = Getv(compile_options, &filetype)
 	let run_cmd = Getv(run_options, &filetype)
@@ -182,6 +191,14 @@ imap jk <ESC>
 " run run run
 imap <F5> <ESC>:call Run()<CR>
 nmap <F5> <ESC>:call Run()<CR>
+
+function! C98()
+	exec 'w'
+	exec '!g++ -Wall -O2 -D__DELTA__ % && echo __COMPILED__ && a'
+endfunction
+
+imap <F6> <ESC>:call C98()<CR>
+nmap <F6> <ESC>:call C98()<CR>
 
 " Fast saving
 nmap <leader>w :w!<cr>
