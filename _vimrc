@@ -78,6 +78,15 @@ set shellslash
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 
+" listchars
+set listchars=trail:~,precedes:«,extends:»,eol:¬,tab:»·
+set list
+
+" 80
+if (exists('+colorcolumn'))
+	set colorcolumn=80
+	highlight ColorColumn ctermbg=9
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " au
@@ -170,7 +179,7 @@ function! Run()
 			\'ruby'    : 'ruby %',
 			\'python'  : 'python %',
 			\'sh'      : 'sh %',
-			\'haskell' : 'runghc %',
+			\'haskell' : 'runghc -Wall %',
 			\'tex'     : 'SumatraPDF %',
 			\'go'	   : 'go run %'
 		\}
@@ -199,6 +208,8 @@ endfunction
 
 imap <F6> <ESC>:call C98()<CR>
 nmap <F6> <ESC>:call C98()<CR>
+
+nmap <leader>t :call InsertTemlate()<CR>
 
 " Fast saving
 nmap <leader>w :w!<cr>
